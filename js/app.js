@@ -44,16 +44,71 @@
     return `        <ul class="mockup-usecases" role="list">${items}        </ul>`;
   }
 
-  function openVideoModal(url, title) {
+  function normalizeVideoUrl(url) {
+    if (!url) return '';
+    const trimmed = url.trim();
+
+    // Google Drive /file/d/FILE_ID/view... links
+    const fileMatch = trimmed.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+    if (fileMatch) {
+      return `https://drive.google.com/uc?export=download&id=${fileMatch[1]}`;
+    }
+
+    // Google Drive uc?id=FILE_ID links (already in download form)
+    const ucMatch = trimmed.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+    if (ucMatch && trimmed.includes('drive.google.com')) {
+      return `https://drive.google.com/uc?export=download&id=${ucMatch[1]}`;
+    }
+
+    // Direct MP4 / stream URLs pass through
+    return trimmed;
+  }
+
+  function showVideoError(originalUrl) {
+    const video = document.getElementById('modal-video');
+    const wrapper = video ? video.parentElement : null;
+    if (!wrapper) return;
+
+    let errorEl = wrapper.querySelector('.modal-video-error');
+    if (!errorEl) {
+      errorEl = document.createElement('div');
+      errorEl.className = 'modal-video-error';
+      wrapper.appendChild(errorEl);
+    }
+
+    errorEl.innerHTML = `
+      <p>The video could not stream from this host.</p>
+      <a href="${escapeHtml(originalUrl)}" target="_blank" rel="noopener noreferrer">Open original video link ↗</a>
+    `;
+    errorEl.classList.add('visible');
+    video.style.display = 'none';
+  }
+
+  function clearVideoError() {
+    const video = document.getElementById('modal-video');
+    const wrapper = video ? video.parentElement : null;
+    if (!wrapper) return;
+    const errorEl = wrapper.querySelector('.modal-video-error');
+    if (errorEl) errorEl.classList.remove('visible');
+    if (video) video.style.display = '';
+  }
+
+  function openVideoModal(rawUrl, title) {
     const modal = document.getElementById('video-modal');
     const video = document.getElementById('modal-video');
     const titleEl = document.getElementById('modal-title');
     if (!modal || !video) return;
+
+    clearVideoError();
+    const url = normalizeVideoUrl(rawUrl);
     video.src = url;
     if (titleEl) titleEl.textContent = title || 'Demo video';
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
-    video.play().catch(() => {});
+
+    video.play().catch(() => {
+      showVideoError(rawUrl);
+    });
   }
 
   function closeVideoModal() {
@@ -62,6 +117,7 @@
     if (!modal || !video) return;
     video.pause();
     video.src = '';
+    clearVideoError();
     modal.classList.remove('open');
     document.body.style.overflow = '';
   }
@@ -69,6 +125,7 @@
   function bindModal() {
     const modal = document.getElementById('video-modal');
     const close = document.getElementById('modal-close');
+    const video = document.getElementById('modal-video');
     if (!modal) return;
     if (close) {
       close.addEventListener('click', closeVideoModal);
@@ -81,6 +138,11 @@
         closeVideoModal();
       }
     });
+    if (video) {
+      video.addEventListener('error', () => {
+        showVideoError(video.dataset.originalUrl || video.src);
+      });
+    }
   }
 
   function createIconActions(ext) {
@@ -319,6 +381,8 @@
     if (frontVideo) {
       frontVideo.addEventListener('click', (event) => {
         event.stopPropagation();
+        const video = document.getElementById('modal-video');
+        if (video) video.dataset.originalUrl = frontVideo.dataset.video;
         openVideoModal(frontVideo.dataset.video, frontVideo.dataset.title);
       });
     }
@@ -327,6 +391,8 @@
     if (backVideo) {
       backVideo.addEventListener('click', (event) => {
         event.stopPropagation();
+        const video = document.getElementById('modal-video');
+        if (video) video.dataset.originalUrl = backVideo.dataset.video;
         openVideoModal(backVideo.dataset.video, backVideo.dataset.title);
       });
     }
