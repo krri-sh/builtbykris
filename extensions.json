@@ -1,0 +1,123 @@
+{
+  "site": {
+    "title": "Built by Kris",
+    "url": "https://builtbykris.com",
+    "contactEmail": "support@builtbykris.com"
+  },
+  "profile": {
+    "name": "Kris",
+    "headline": "Chrome extensions that quietly remove friction from your workday.",
+    "bio": "I’m a practical problem solver at heart. When I hit a repetitive task, a clunky workflow, or a gap between tools, I don’t just complain—I build a better way. My extensions are small, opinionated products born from real browser moments: drafting posts, inspecting APIs, automating workflows, locking down privacy, and moving faster. I like thinking around corners, combining simple ideas in unexpected ways, and shipping tools that feel obvious only after you’ve used them."
+  },
+  "extensions": [
+    {
+      "id": "socialpostforge",
+      "name": "SocialPostForge",
+      "url": "https://socialpostforge.builtbykris.com",
+      "videoUrl": "",
+      "tagline": "Forge scroll-stopping social posts in seconds.",
+      "shortDescription": "Turn an image or rough notes into polished, ready-to-copy social media posts across multiple styles.",
+      "painpoint": "Another blank post. Another hour lost trying to sound interesting.",
+      "useCases": [
+        "Founders promoting product updates without hiring a copywriter",
+        "Marketers turning screenshots into launch threads",
+        "Creators staying consistent across Twitter, LinkedIn, and Instagram"
+      ],
+      "keyFeatures": [
+        "Image or text input",
+        "Multiple post styles",
+        "AIDA, PAS, and Cialdini prompt library",
+        "Privacy-first local storage"
+      ],
+      "accentColor": "#E94E1B",
+      "icon": "✍️"
+    },
+    {
+      "id": "execpilot",
+      "name": "ExecPilot",
+      "url": "https://execpilot.builtbykris.com",
+      "videoUrl": "",
+      "tagline": "Your executive co-pilot inside the browser.",
+      "shortDescription": "Draft decisive emails, sharpen LinkedIn outreach, and move faster on high-stakes tasks.",
+      "painpoint": "You know what you mean. You just can’t get it to sound right.",
+      "useCases": [
+        "Founders writing investor updates and cold outreach",
+        "Leaders handling sensitive team conversations",
+        "Operators replying fast without sounding rushed"
+      ],
+      "keyFeatures": [
+        "Executive tone drafts",
+        "LinkedIn and email templates",
+        "Quick decision frameworks"
+      ],
+      "accentColor": "#1B4DFF",
+      "icon": "🧭"
+    },
+    {
+      "id": "loompath",
+      "name": "LoomPath",
+      "url": "https://loompath.builtbykris.com",
+      "videoUrl": "https://drive.google.com/file/d/1y_kHLroghkgwkB7DK1D9wcNcjPv86k2Q/view?usp=sharing",
+      "tagline": "Turn repetitive browser work into a dependable system.",
+      "shortDescription": "Record, automate, and orchestrate browser workflows locally—from clicks and scraping to data transformation and delivery.",
+      "painpoint": "You’re doing the same clicks, copying the same fields, every single day.",
+      "useCases": [
+        "Ops teams extracting and delivering data between web apps",
+        "Recruiters scraping candidate lists into spreadsheets",
+        "Founders automating onboarding and reporting workflows"
+      ],
+      "keyFeatures": [
+        "Visual action recording and selection",
+        "If/Then, Switch logic, JSON parsing",
+        "Local-first execution with encrypted secrets",
+        "Webhooks, API calls, and scheduled runs"
+      ],
+      "accentColor": "#625DF5",
+      "icon": "🔄"
+    },
+    {
+      "id": "contractguardian",
+      "name": "ContractGuardian",
+      "url": "https://contractguardian.builtbykris.com",
+      "videoUrl": "",
+      "tagline": "Local-first API intelligence in Chrome DevTools.",
+      "shortDescription": "Capture network traffic, detect API contract drift, and turn mysterious requests into usable data—without injecting code.",
+      "painpoint": "The data is right there in the network tab, but getting it out feels like archaeology.",
+      "useCases": [
+        "Developers discovering undocumented endpoints behind any page",
+        "Engineers monitoring APIs for unexpected schema changes",
+        "Builders exporting live request data to CSV, JS, JSON, or Loompath"
+      ],
+      "keyFeatures": [
+        "HTTP request capture and baseline comparison",
+        "Schema drift detection",
+        "API Finder with local Ollama support",
+        "Export recipes to CSV, JS, JSON, or Loompath"
+      ],
+      "accentColor": "#0A8554",
+      "icon": "🛡️"
+    },
+    {
+      "id": "airlock",
+      "name": "AirLock",
+      "url": "https://airlock.builtbykris.com",
+      "videoUrl": "",
+      "tagline": "Stop secrets before they leave your browser.",
+      "shortDescription": "Check text before you submit it to catch API keys, credentials, PII, and internal terms—then redact, mask, or block them.",
+      "painpoint": "One paste into ChatGPT and your API key is part of the training data.",
+      "useCases": [
+        "Engineers pasting logs and code into AI tools safely",
+        "Support teams sanitizing tickets before sending",
+        "Anyone blocking PII, tokens, and internal terms from leaving the browser"
+      ],
+      "keyFeatures": [
+        "Local detection of secrets and PII",
+        "Redact, pseudonymize, mask, or block",
+        "Optional on-device Ollama classification",
+        "Safe form application of sanitized values"
+      ],
+      "accentColor": "#2563EB",
+      "icon": "🔒"
+    }
+  ]
+}
