@@ -627,43 +627,43 @@ a {
     width: 100%;
   }
 
-  .card-grid {
+  .mockup-card-grid {
     grid-template-columns: 1fr;
   }
 
-  .flip-card {
+  .mockup-card {
     height: 25rem;
   }
 
-  .card-back {
+  .mockup-back {
     padding: 1.5rem;
     padding-top: 2.75rem;
     gap: 0.85rem;
   }
 
-  .card-back-content {
+  .mockup-back-content {
     gap: 0.75rem;
   }
 
-  .card-actions {
+  .mockup-actions {
     top: 1rem;
     right: 1rem;
   }
 
-  .icon-action {
+  .mockup-icon-action {
     width: 1.95rem;
     height: 1.95rem;
   }
 
-  .card-painpoint {
+  .mockup-painpoint {
     font-size: 0.95rem;
   }
 
-  .card-face {
+  .mockup-face {
     padding: 1.6rem;
   }
 
-  .card-front h3 {
+  .mockup-front h3 {
     font-size: 1.5rem;
   }
 }
@@ -1047,6 +1047,46 @@ a.mockup-icon-action {
   background: #10b981;
 }
 
+/* Variation: Ritual SOP recorder mockup */
+.sop-preview .preview-sop-heading {
+  margin-bottom: 8px;
+  color: #31313c;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.sop-preview .preview-sop-step {
+  display: grid;
+  grid-template-columns: 18px 1fr 28px;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 8px;
+  margin-bottom: 5px;
+  border: 1px solid #ebe7e9;
+  border-radius: 8px;
+  background: #fffafb;
+  color: #5d5558;
+  font-size: 9px;
+}
+
+.sop-preview .preview-sop-step b {
+  display: grid;
+  width: 16px;
+  height: 16px;
+  place-items: center;
+  border-radius: 5px;
+  background: var(--card-accent, var(--accent));
+  color: #fff;
+  font-size: 8px;
+}
+
+.sop-preview .preview-sop-step i {
+  display: block;
+  height: 20px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #eadfe3, #f7f2f4);
+}
+
 .mockup-front-hint {
   flex: 0 0 auto;
   font-size: 0.75rem;
@@ -1122,26 +1162,30 @@ a.mockup-icon-action {
   color: var(--text);
 }
 
-.mockup-features li::before,
-.mockup-usecases li::before {
-  position: absolute;
-  left: 0;
-  top: 0.05em;
-  font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: 0.95em;
-  font-weight: 800;
-  line-height: 1;
-  font-variant-emoji: text;
-}
-
 .mockup-features li::before {
-  content: '✓';
-  color: var(--accent-2);
+  content: '';
+  position: absolute;
+  left: 0.05rem;
+  top: 0.28em;
+  width: 0.45em;
+  height: 0.22em;
+  border-left: 2px solid var(--accent-2);
+  border-bottom: 2px solid var(--accent-2);
+  transform: rotate(-45deg);
+  transform-origin: center;
 }
 
 .mockup-usecases li::before {
-  content: '→';
-  color: var(--accent);
+  content: '';
+  position: absolute;
+  left: 0.2rem;
+  top: 0.25em;
+  width: 0.4em;
+  height: 0.4em;
+  border-top: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
+  transform: rotate(45deg);
+  transform-origin: center;
 }
 
 @media (max-width: 900px) {
