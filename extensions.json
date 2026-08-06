@@ -118,6 +118,29 @@
       ],
       "accentColor": "#2563EB",
       "icon": "🔒"
+    },
+    {
+      "id": "ritual",
+      "name": "Ritual",
+      "url": "https://ritual.builtbykris.com",
+      "videoUrl": "",
+      "tagline": "Turn browser work into a ritual your team can repeat.",
+      "shortDescription": "Record a browser workflow and turn it into a polished, reusable SOP with captured screenshots, editable steps, and PDF export.",
+      "fullDescription": "Ritual captures the meaningful clicks and form changes in a browser workflow, then formats them into a clear, print-ready standard operating procedure your team can follow and reuse.",
+      "painpoint": "You know the process. Your team is still learning it from a messy screen recording.",
+      "useCases": [
+        "Operations teams documenting repeatable browser processes",
+        "Founders turning onboarding flows into clear playbooks",
+        "Support and enablement teams creating visual SOPs without manual screenshots"
+      ],
+      "keyFeatures": [
+        "Browser interaction recording with captured screenshots",
+        "Editable, print-ready SOPs and PDF export",
+        "Saved workflow library and resume capture",
+        "Optional AI, dictation, and branded exports with Ritual Pro"
+      ],
+      "accentColor": "#741E35",
+      "icon": "📜"
     }
   ]
 }
