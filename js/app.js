@@ -215,6 +215,13 @@
         resultLabel: '',
         button: 'Sanitize',
         type: 'privacy'
+      },
+      ritual: {
+        label: 'BROWSER SOP',
+        input: '',
+        resultLabel: '',
+        button: 'Export SOP',
+        type: 'sop'
       }
     };
 
@@ -282,6 +289,20 @@
       `;
     }
 
+    if (theme.type === 'sop') {
+      return `
+        <div class="mockup-preview sop-preview" style="--card-accent:${color}" aria-hidden="true">
+          <div class="preview-toolbar"><span></span><span></span><span></span></div>
+          <div class="preview-label">${escapeHtml(theme.label)}</div>
+          <div class="preview-sop-heading">Client onboarding</div>
+          <div class="preview-sop-step"><b>1</b><span>Open workspace</span><i></i></div>
+          <div class="preview-sop-step"><b>2</b><span>Invite the team</span><i></i></div>
+          <div class="preview-sop-step"><b>3</b><span>Confirm access</span><i></i></div>
+          <div class="preview-button" style="background:${color}">${escapeHtml(theme.button)}</div>
+        </div>
+      `;
+    }
+
     return `
       <div class="mockup-preview" style="--card-accent:${color}" aria-hidden="true">
         <div class="preview-toolbar"><span></span><span></span><span></span></div>
@@ -331,7 +352,7 @@
       <div class="mockup-back-content">
         <div class="mockup-back-section">
           <h4>What it does</h4>
-          <p class="mockup-description">${escapeHtml(ext.fullDescription || '')}</p>
+          <p class="mockup-description">${escapeHtml(ext.fullDescription || ext.shortDescription || '')}</p>
         </div>
 
         <div class="mockup-back-section usecases-section">
