@@ -12,6 +12,8 @@
   "extensions": [
     {
       "id": "socialpostforge",
+      "visible": true,
+      "hot": true,
       "name": "SocialPostForge",
       "url": "https://socialpostforge.builtbykris.com",
       "videoUrl": "https://drive.google.com/file/d/10tkjc29ecnflw_FNSapmd7qpfySxgxnd/view?usp=sharing",
@@ -34,6 +36,8 @@
     },
     {
       "id": "execpilot",
+      "visible": true,
+      "hot": true,
       "name": "ExecPilot",
       "url": "https://getexecpilot.com/",
       "videoUrl": "https://drive.google.com/file/d/10hR34UyJ91Bbe6rt2I4YZvHO4rk2mUgC/view?usp=sharing",
@@ -55,6 +59,8 @@
     },
     {
       "id": "loompath",
+      "visible": true,
+      "hot": false,
       "name": "LoomPath",
       "url": "https://loompath.builtbykris.com",
       "videoUrl": "https://drive.google.com/file/d/1y_kHLroghkgwkB7DK1D9wcNcjPv86k2Q/view?usp=sharing",
@@ -77,6 +83,8 @@
     },
     {
       "id": "contractguardian",
+      "visible": true,
+      "hot": false,
       "name": "ContractGuardian",
       "url": "https://contractguardian.builtbykris.com",
       "videoUrl": "https://drive.google.com/file/d/1JtJVTfl-wOhJs2QmBAcWn6Ff6u3LGsHJ/view?usp=sharing",
@@ -98,7 +106,34 @@
       "icon": "🛡️"
     },
     {
+      "id": "journeylens",
+      "visible": true,
+      "hot": false,
+      "name": "JourneyLens",
+      "url": "https://journeylens.builtbykris.com",
+      "videoUrl": "",
+      "tagline": "See the journey. Spot the risk.",
+      "shortDescription": "Record real browser walkthroughs and turn them into reproducible local QA, resilient tests, evidence-rich reports, and training packages.",
+      "fullDescription": "JourneyLens captures the intent, timing, selectors, screenshots, diagnostics, and assertions behind a real browser process, then turns the journey into maintainable local QA, Loompath workflows, Playwright tests, reports, and internal training artifacts.",
+      "painpoint": "The process worked yesterday. Today nobody knows which step changed—or where the risk appeared.",
+      "useCases": [
+        "QA teams recording checkout, onboarding, and approval journeys",
+        "Operations teams turning real processes into repeatable evidence",
+        "Product teams exporting maintainable Playwright and Loompath tests"
+      ],
+      "keyFeatures": [
+        "Semantic journey recording with resilient selector fallbacks",
+        "Assertions, diagnostics, timing, screenshots, and accessibility checks",
+        "Local replay with Playwright, Loompath, and report exports",
+        "Local-first storage with redacted training packages"
+      ],
+      "accentColor": "#16706B",
+      "icon": "JL"
+    },
+    {
       "id": "airlock",
+      "visible": true,
+      "hot": false,
       "name": "AirLock",
       "url": "https://airlock.builtbykris.com",
       "videoUrl": "https://drive.google.com/file/d/1yjWuMkyspF86msrGYxoJVzjCvygnQvr7/view?usp=sharing",
@@ -121,9 +156,11 @@
     },
     {
       "id": "ritual",
+      "visible": false,
+      "hot": false,
       "name": "Ritual",
       "url": "https://ritual.builtbykris.com",
-      "videoUrl": "https://drive.google.com/file/d/1jhyghDsmFb5Vl7zDV90jsi-f-zeww9R1/view?usp=sharing",
+      "videoUrl": "https://drive.google.com/file/d/1yjWuMkyspF86msrGYxoJVzjCvygnQvr7/view?usp=sharing",
       "tagline": "Turn browser work into a ritual your team can repeat.",
       "shortDescription": "Record a browser workflow and turn it into a polished, reusable SOP with captured screenshots, editable steps, and PDF export.",
       "fullDescription": "Ritual captures the meaningful clicks and form changes in a browser workflow, then formats them into a clear, print-ready standard operating procedure your team can follow and reuse.",
