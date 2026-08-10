@@ -7,19 +7,20 @@
   <title>Built by Kris</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Satoshi:wght@400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
-  <script src="js/app.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=20260810-2" />
+  <script src="js/app.js?v=20260810-3" defer></script>
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html" aria-label="Built by Kris home">
-        <span class="logo-script">BuiltByKris</span>
+        <span class="logo-mark" aria-hidden="true">BK</span>
+        <span class="logo-script">Built by Kris</span>
       </a>
       <nav class="nav">
         <a href="#extensions">Extensions</a>
-        <a href="#about">About</a>
+        <a href="about-me.html">About me</a>
         <a href="privacy-policy.html">Privacy</a>
         <a class="nav-cta" href="mailto:support@builtbykris.com">Contact</a>
       </nav>
@@ -28,22 +29,30 @@
 
   <main>
     <section class="hero">
-      <div class="container">
-        <p class="eyebrow">Chrome extensions by Kris</p>
-        <h1 class="hero-headline" id="hero-headline">Loading…</h1>
-        <p class="hero-bio" id="hero-bio"></p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#extensions">Explore extensions</a>
-          <a class="btn btn-ghost" href="mailto:support@builtbykris.com">Get in touch</a>
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow">Independent browser software</p>
+          <h1 class="hero-headline" id="hero-headline">Loading…</h1>
+          <p class="hero-bio" id="hero-bio"></p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#extensions">Explore the collection <span aria-hidden="true">↘</span></a>
+            <a class="btn btn-ghost" href="mailto:support@builtbykris.com">Start a conversation</a>
+          </div>
         </div>
+        <aside class="studio-panel" aria-label="Studio overview">
+          <div class="studio-panel-top"><span class="status-dot"></span><span>Actively shipping</span><b>2026</b></div>
+          <div class="studio-count"><strong id="extension-count">—</strong><span>focused browser products</span></div>
+          <div class="studio-principles"><span>Local-first</span><span>Purpose-built</span><span>Human support</span></div>
+          <p>Small, opinionated tools for real work—not another sprawling software suite.</p>
+        </aside>
       </div>
     </section>
 
     <section class="extensions" id="extensions" aria-labelledby="extensions-heading">
       <div class="container">
         <div class="section-header">
-          <h2 id="extensions-heading">The extensions</h2>
-          <p>Click any card to flip it and see the use cases behind each one.</p>
+          <div><p class="section-kicker">The product shelf</p><h2 id="extensions-heading">Tools with a point of view.</h2></div>
+          <p>Each product begins with a specific moment of friction. Flip a card to see how it earns its place in your browser.</p>
         </div>
         <div class="card-grid" id="card-grid" role="list">
           <!-- Cards are rendered from extensions.json -->
@@ -53,7 +62,8 @@
 
     <section class="about" id="about" aria-labelledby="about-heading">
       <div class="container about-inner">
-        <h2 id="about-heading">A little more about the maker</h2>
+        <p class="section-kicker">Behind the work</p>
+        <h2 id="about-heading">Built close to the problem.</h2>
         <p>I see problems as invitations. Most of these extensions started with a single frustrating moment inside Chrome: a blank compose box, an API that refused to reveal itself, a form about to leak a secret, a workflow that demanded one too many manual clicks. I don’t chase complexity for its own sake—my best ideas come from removing steps, not adding them.</p>
         <p>If you’re curious, want a feature, or just want to say hi, reach out at <a href="mailto:support@builtbykris.com">support@builtbykris.com</a>.</p>
       </div>
@@ -64,6 +74,7 @@
     <div class="container footer-inner">
       <p class="footer-tagline">Built with care by Kris.</p>
       <div class="footer-links">
+        <a href="about-me.html">About me</a>
         <a href="mailto:support@builtbykris.com">support@builtbykris.com</a>
         <a href="privacy-policy.html">Privacy Policy</a>
       </div>
@@ -82,7 +93,7 @@
     </div>
   </div>
 
-  <script id="extensions-data" type="application/json">
+  <script id="extensions-data-legacy" type="application/json" disabled>
 {
   "site": {
     "title": "Built by Kris",
@@ -97,6 +108,8 @@
   "extensions": [
     {
       "id": "socialpostforge",
+      "visible": true,
+      "hot": false,
       "name": "SocialPostForge",
       "url": "https://socialpostforge.builtbykris.com",
       "videoUrl": "",
@@ -119,6 +132,8 @@
     },
     {
       "id": "execpilot",
+      "visible": true,
+      "hot": false,
       "name": "ExecPilot",
       "url": "https://getexecpilot.com",
       "videoUrl": "",
@@ -140,6 +155,8 @@
     },
     {
       "id": "loompath",
+      "visible": true,
+      "hot": false,
       "name": "LoomPath",
       "url": "https://loompath.builtbykris.com",
       "videoUrl": "",
@@ -162,6 +179,8 @@
     },
     {
       "id": "contractguardian",
+      "visible": true,
+      "hot": false,
       "name": "ContractGuardian",
       "url": "https://contractguardian.builtbykris.com",
       "videoUrl": "",
@@ -183,7 +202,34 @@
       "icon": "🛡️"
     },
     {
+      "id": "journeylens",
+      "visible": true,
+      "hot": true,
+      "name": "JourneyLens",
+      "url": "https://journeylens.builtbykris.com",
+      "videoUrl": "",
+      "tagline": "See the journey. Spot the risk.",
+      "shortDescription": "Record real browser walkthroughs and turn them into reproducible local QA, resilient tests, evidence-rich reports, and training packages.",
+      "fullDescription": "JourneyLens captures the intent, timing, selectors, screenshots, diagnostics, and assertions behind a real browser process, then turns the journey into maintainable local QA, Loompath workflows, Playwright tests, reports, and internal training artifacts.",
+      "painpoint": "The process worked yesterday. Today nobody knows which step changed—or where the risk appeared.",
+      "useCases": [
+        "QA teams recording checkout, onboarding, and approval journeys",
+        "Operations teams turning real processes into repeatable evidence",
+        "Product teams exporting maintainable Playwright and Loompath tests"
+      ],
+      "keyFeatures": [
+        "Semantic journey recording with resilient selector fallbacks",
+        "Assertions, diagnostics, timing, screenshots, and accessibility checks",
+        "Local replay with Playwright, Loompath, and report exports",
+        "Local-first storage with redacted training packages"
+      ],
+      "accentColor": "#16706B",
+      "icon": "JL"
+    },
+    {
       "id": "airlock",
+      "visible": true,
+      "hot": false,
       "name": "AirLock",
       "url": "https://airlock.builtbykris.com",
       "videoUrl": "",
@@ -206,6 +252,8 @@
     },
     {
       "id": "ritual",
+      "visible": true,
+      "hot": false,
       "name": "Ritual",
       "url": "https://ritual.builtbykris.com",
       "videoUrl": "",
