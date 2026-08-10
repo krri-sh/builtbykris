@@ -7,6 +7,7 @@
   const headline = document.getElementById('hero-headline');
   const bio = document.getElementById('hero-bio');
   const year = document.getElementById('year');
+  const extensionCount = document.getElementById('extension-count');
 
   if (year) {
     year.textContent = new Date().getFullYear();
@@ -20,6 +21,17 @@
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#039;');
+  }
+
+  function readFlag(value, defaultValue) {
+    if (typeof value === 'boolean') return value;
+    if (typeof value === 'number') return value !== 0;
+    if (typeof value === 'string') {
+      const normalized = value.trim().toLowerCase();
+      if (['true', '1', 'yes', 'on'].includes(normalized)) return true;
+      if (['false', '0', 'no', 'off', ''].includes(normalized)) return false;
+    }
+    return defaultValue;
   }
 
   function renderProfile(profile) {
@@ -209,6 +221,13 @@
         button: 'Compare baseline',
         type: 'api'
       },
+      journeylens: {
+        label: 'LIVE JOURNEY',
+        input: '',
+        resultLabel: '',
+        button: 'Inspect journey',
+        type: 'journey'
+      },
       airlock: {
         label: 'SCAN',
         input: '',
@@ -263,6 +282,23 @@
             <span class="preview-status">200</span>
           </div>
           <div class="preview-button" style="background:${color}">${escapeHtml(theme.button)}</div>
+        </div>
+      `;
+    }
+
+    if (theme.type === 'journey') {
+      return `
+        <div class="mockup-preview journey-preview" style="--card-accent:${color}" aria-hidden="true">
+          <div class="preview-toolbar"><span></span><span></span><span></span></div>
+          <div class="preview-label">${escapeHtml(theme.label)}</div>
+          <div class="journey-summary">
+            <span class="journey-record-dot"></span>
+            <div><b>Invoice walkthrough</b><small>00:42 · 4 actions · 1 risk</small></div>
+          </div>
+          <div class="journey-step"><b>1</b><span>Open invoices<small>Unique URL · +0.0s</small></span><i class="journey-ok">OK</i></div>
+          <div class="journey-step"><b>2</b><span>Click New invoice<small>Role + name · +1.8s</small></span><i class="journey-ok">OK</i></div>
+          <div class="journey-step"><b>3</b><span>Assert total exists<small>Selector needs review</small></span><i class="journey-risk">RISK</i></div>
+          <div class="preview-button">${escapeHtml(theme.button)}</div>
         </div>
       `;
     }
@@ -331,6 +367,7 @@
     front.className = 'mockup-face mockup-front';
     front.innerHTML = `
       <div class="mockup-card-glow" style="background:${color}"></div>
+      ${readFlag(ext.hot, false) ? '<span class="hot-release">Trending now</span>' : ''}
       ${createIconActions(ext)}
       <div class="mockup-front-content">
         <div class="mockup-front-text">
@@ -424,7 +461,13 @@
   function renderExtensions(extensions) {
     if (!grid) return;
 
-    if (!Array.isArray(extensions) || extensions.length === 0) {
+    const visibleExtensions = Array.isArray(extensions)
+      ? extensions.filter((ext) => ext && readFlag(ext.visible, true))
+      : [];
+
+    if (extensionCount) extensionCount.textContent = String(visibleExtensions.length).padStart(2, '0');
+
+    if (visibleExtensions.length === 0) {
       grid.innerHTML = `
         <div class="error-state">
           <p>No extensions found. Check back soon.</p>
@@ -435,7 +478,7 @@
 
     grid.classList.add('mockup-card-grid');
     grid.innerHTML = '';
-    extensions.forEach((ext, index) => {
+    visibleExtensions.forEach((ext, index) => {
       const card = createCard(ext);
       card.style.animationDelay = `${index * 90}ms`;
       grid.appendChild(card);
@@ -452,21 +495,10 @@
     `;
   }
 
-  function getInlineFallback() {
-    const el = document.getElementById('extensions-data');
-    if (!el) return null;
-    try {
-      return JSON.parse(el.textContent);
-    } catch (e) {
-      console.error('Built by Kris: inline JSON fallback is invalid', e);
-      return null;
-    }
-  }
-
   async function loadData() {
     bindModal();
     try {
-      const response = await fetch('extensions.json');
+      const response = await fetch(`extensions.json?v=${Date.now()}`, { cache: 'no-store' });
       if (!response.ok) {
         throw new Error(`Failed to load extension data (${response.status})`);
       }
@@ -474,15 +506,12 @@
       renderProfile(data.profile);
       renderExtensions(data.extensions);
     } catch (error) {
-      console.warn('Built by Kris: could not fetch extensions.json; using inline fallback.', error);
-      const fallback = getInlineFallback();
-      if (fallback) {
-        renderProfile(fallback.profile);
-        renderExtensions(fallback.extensions);
-      } else {
-        showError('Could not load extension details right now.');
-        if (headline) headline.textContent = 'Built by Kris';
-      }
+      console.error('Built by Kris: could not load extensions.json.', error);
+      const message = window.location.protocol === 'file:'
+        ? 'This page must be opened through a local web server so extensions.json can be loaded. Direct file viewing is blocked by browser security.'
+        : 'Could not load extension details right now. Please refresh the page.';
+      showError(message);
+      if (headline) headline.textContent = 'Built by Kris';
     }
   }
 
