@@ -184,7 +184,7 @@
   "hot": true,
   "name": "ClipPilot",
   "url": "https://clippilot.builtbykris.com",
-  "videoUrl": "",
+  "videoUrl": "https://drive.google.com/file/d/1TasMN73AVVu8rlSyMnGGkQNA7bmNiQUN/view?usp=sharing",
   "tagline": "The clipboard that understands.",
   "shortDescription": "Recognize and transform structured data, code, logs, security content, and more directly from Chrome's side panel.",
   "fullDescription": "ClipPilot turns copied JSON, SQL, JWTs, cURL, logs, infrastructure configuration, and 20+ other formats into an intelligent local-first workspace with contextual actions, safe transformations, and optional AI.",
