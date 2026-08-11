@@ -241,6 +241,13 @@
         resultLabel: '',
         button: 'Export SOP',
         type: 'sop'
+      },
+      clippilot: {
+        label: 'JSON DETECTED',
+        input: '{ "customer": "Ada", "plan": "pro" }',
+        resultLabel: 'Clipboard',
+        button: 'Beautify & copy',
+        type: 'default'
       }
     };
 
