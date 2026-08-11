@@ -178,6 +178,30 @@
       ],
       "accentColor": "#741E35",
       "icon": "📜"
-    }
+    },{
+  "id": "clippilot",
+  "visible": true,
+  "hot": true,
+  "name": "ClipPilot",
+  "url": "https://clippilot.builtbykris.com",
+  "videoUrl": "",
+  "tagline": "The clipboard that understands.",
+  "shortDescription": "Recognize and transform structured data, code, logs, security content, and more directly from Chrome's side panel.",
+  "fullDescription": "ClipPilot turns copied JSON, SQL, JWTs, cURL, logs, infrastructure configuration, and 20+ other formats into an intelligent local-first workspace with contextual actions, safe transformations, and optional AI.",
+  "painpoint": "You copied the answer. Now you are wasting time finding another tool to understand or transform it.",
+  "useCases": [
+    "Developers formatting JSON, SQL, cURL, JWTs, and configuration without changing tools",
+    "Security-conscious teams detecting and redacting sensitive clipboard content locally",
+    "Operators using Ollama or OpenRouter for contextual transformations on demand"
+  ],
+  "keyFeatures": [
+    "Local detection for 25+ clipboard content types",
+    "Contextual formatting, conversion, validation, and extraction actions",
+    "Sensitive-data protection with no automatic uploads",
+    "Ollama-first AI with optional OpenRouter support"
+  ],
+  "accentColor": "#7054D1",
+  "icon": "CP"
+}
   ]
 }
