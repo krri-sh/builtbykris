@@ -111,7 +111,7 @@
       "hot": false,
       "name": "JourneyLens",
       "url": "https://journeylens.builtbykris.com",
-      "videoUrl": "",
+      "videoUrl": "https://drive.google.com/file/d/1o8NzY_4vt8_9zFI4GTlu08gtrXuFSbi9/view?usp=sharing",
       "tagline": "See the journey. Spot the risk.",
       "shortDescription": "Record real browser walkthroughs and turn them into reproducible local QA, resilient tests, evidence-rich reports, and training packages.",
       "fullDescription": "JourneyLens captures the intent, timing, selectors, screenshots, diagnostics, and assertions behind a real browser process, then turns the journey into maintainable local QA, Loompath workflows, Playwright tests, reports, and internal training artifacts.",
