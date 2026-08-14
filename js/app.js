@@ -248,6 +248,13 @@
         resultLabel: 'Clipboard',
         button: 'Beautify & copy',
         type: 'default'
+      },
+      devrecall: {
+        label: 'TECHNICAL RECALL',
+        input: 'Latest record per customer in Snowflake…',
+        resultLabel: 'Reference',
+        button: 'Recall syntax',
+        type: 'default'
       }
     };
 
