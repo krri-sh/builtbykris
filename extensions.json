@@ -202,6 +202,30 @@
   ],
   "accentColor": "#7054D1",
   "icon": "CP"
+},{
+  "id": "devrecall",
+  "visible": true,
+  "hot": true,
+  "name": "DevRecall",
+  "url": "https://devrecall.builtbykris.com",
+  "videoUrl": "https://drive.google.com/file/d/1Dscyye2H0bBm6NcOKkmYmAQxr1ohbuzs/view?usp=sharing",
+  "tagline": "Your technical memory, beside the browser.",
+  "shortDescription": "Search syntax by intent, save reusable snippets, understand errors, and learn recurring concepts without leaving the current tab.",
+  "fullDescription": "DevRecall turns vague technical memory into copy-ready answers. It combines curated references, personal snippets, error intelligence, guarded AI, code packs, an extraction workbench, and focused recall in a local-first Chrome side panel.",
+  "painpoint": "You remember the idea, but lose the next ten minutes searching for the exact syntax again.",
+  "useCases": [
+    "Developers recalling JavaScript, Python, Git, Regex, API, and DOM patterns by intent",
+    "Data professionals finding Snowflake, SQL, Excel, Access, and LAMBDA solutions",
+    "Automation engineers validating selectors, diagnosing errors, and retaining extraction recipes"
+  ],
+  "keyFeatures": [
+    "Intent-ranked curated references and personal snippet library",
+    "Deterministic error fixes with guarded AI fallback",
+    "CSS and XPath extraction workbench with local previews",
+    "Portable code packs, focused learning, and optional Ollama or cloud AI"
+  ],
+  "accentColor": "#006080",
+  "icon": "DR"
 }
   ]
 }
