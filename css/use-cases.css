@@ -105,7 +105,14 @@
 .usecase-panel-header > a span { margin-left: .25rem; color: inherit; }
 
 .usecase-scenario-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.3rem; }
-.usecase-scenario { position: relative; padding: 1.25rem; border: 1px solid color-mix(in srgb, var(--active-color) 17%, #dedce5); border-radius: 1.15rem; background: rgba(255,255,255,.82); }
+.usecase-scenario { position: relative; min-width: 0; border-radius: 1.15rem; perspective: 1200px; cursor: pointer; }
+.scenario-card-inner { display: grid; height: 100%; transform-style: preserve-3d; transition: transform .55s cubic-bezier(.2,.75,.25,1); }
+.usecase-scenario.flipped .scenario-card-inner { transform: rotateY(180deg); }
+.scenario-face { grid-area: 1 / 1; min-width: 0; padding: 1.25rem; overflow: hidden; border: 1px solid color-mix(in srgb, var(--active-color) 17%, #dedce5); border-radius: 1.15rem; background: rgba(255,255,255,.88); backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.scenario-front { display: flex; flex-direction: column; }
+.scenario-back { display: flex; min-height: 100%; flex-direction: column; justify-content: center; align-items: flex-start; transform: rotateY(180deg); background: color-mix(in srgb, var(--active-color) 14%, #fff); }
+.usecase-scenario:hover .scenario-face { border-color: color-mix(in srgb, var(--active-color) 48%, #dedce5); }
+.usecase-scenario:focus-visible { outline: 3px solid color-mix(in srgb, var(--active-color) 32%, transparent); outline-offset: 3px; }
 .scenario-number { color: var(--active-color); font-size: .62rem; font-weight: 800; }
 .scenario-title { margin: .9rem 0 1.15rem; }
 .scenario-title p { color: var(--active-color); font-size: .62rem; font-weight: 800; text-transform: uppercase; }
@@ -114,6 +121,12 @@
 .usecase-scenario dl div { padding-top: .72rem; border-top: 1px solid #eceaf0; }
 .usecase-scenario dt { margin-bottom: .25rem; color: var(--text); font-size: .6rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
 .usecase-scenario dd { margin: 0; color: var(--text-muted); font-size: .75rem; line-height: 1.55; }
+.scenario-flip-hint { display: inline-flex; gap: .35rem; align-items: center; align-self: flex-start; margin-top: auto; padding-top: 1rem; color: var(--active-color); font-size: .62rem; font-weight: 800; }
+.scenario-flip-hint i { font-size: .85rem; font-style: normal; transition: transform .25s ease; }
+.usecase-scenario:hover .scenario-flip-hint i { transform: rotate(45deg); }
+.scenario-comedy-kicker { color: var(--active-color); font-size: .65rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.scenario-back blockquote { max-width: 24ch; margin: 1.2rem 0; color: var(--text); font-size: clamp(1.2rem, 2vw, 1.55rem); font-weight: 700; line-height: 1.45; letter-spacing: -.025em; }
+.scenario-back > p { color: var(--text-muted); font-size: .68rem; font-weight: 700; }
 .usecase-loading { padding: 4rem; color: var(--text-muted); text-align: center; }
 .usecase-error { margin-top: 1rem; padding: 1rem; border: 1px solid #e8b8bf; border-radius: 1rem; background: #fff1f3; color: #7e3341; }
 
@@ -145,9 +158,9 @@
   .usecase-panel-header { grid-template-columns: 3rem 1fr; }
   .usecase-product-mark { width: 3rem; height: 3rem; }
   .usecase-panel-header > a { grid-column: 1 / -1; justify-self: start; }
-  .usecase-scenario { padding: 1rem; }
+  .scenario-face { padding: 1rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #usecase-tabs button { transition: none; }
+  #usecase-tabs button, .scenario-card-inner, .scenario-flip-hint i { transition: none; }
 }
