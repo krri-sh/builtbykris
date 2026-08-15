@@ -235,13 +235,6 @@
         button: 'Sanitize',
         type: 'privacy'
       },
-      ritual: {
-        label: 'BROWSER SOP',
-        input: '',
-        resultLabel: '',
-        button: 'Export SOP',
-        type: 'sop'
-      },
       clippilot: {
         label: 'JSON DETECTED',
         input: '{ "customer": "Ada", "plan": "pro" }',
@@ -255,6 +248,13 @@
         resultLabel: 'Reference',
         button: 'Recall syntax',
         type: 'default'
+      },
+      ritual: {
+        label: 'BROWSER SOP',
+        input: '',
+        resultLabel: '',
+        button: 'Export SOP',
+        type: 'sop'
       }
     };
 
@@ -372,7 +372,7 @@
     `;
   }
 
-  function createCard(ext) {
+  function createCard(ext, latestNote) {
     const color = ext.accentColor && /^#[0-9A-Fa-f]{6}$/.test(ext.accentColor)
       ? ext.accentColor
       : '#6dd5ed';
@@ -415,6 +415,7 @@
           <h4>Highlights</h4>
           ${createFeatureList(ext.keyFeatures)}
         </div>
+        ${latestNote ? `<a class="mockup-note-link" style="--card-accent:${color}" href="notes.html?note=${encodeURIComponent(latestNote.id)}">Latest field note <span aria-hidden="true">→</span></a>` : ''}
       </div>
     `;
 
@@ -437,12 +438,13 @@
     }
 
     card.addEventListener('click', (event) => {
-      const target = event.target.closest('.mockup-icon-action');
+      const target = event.target.closest('a, button');
       if (target) return;
       toggle();
     });
 
     card.addEventListener('keydown', (event) => {
+      if (event.target !== card) return;
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
         toggle();
@@ -472,7 +474,7 @@
     return card;
   }
 
-  function renderExtensions(extensions) {
+  function renderExtensions(extensions, notes) {
     if (!grid) return;
 
     const visibleExtensions = Array.isArray(extensions)
@@ -492,8 +494,12 @@
 
     grid.classList.add('mockup-card-grid');
     grid.innerHTML = '';
+    const latestByProduct = new Map();
+    (Array.isArray(notes) ? notes : []).filter((note) => note && note.visible !== false).sort((a, b) => Number(b.sequence || 0) - Number(a.sequence || 0)).forEach((note) => {
+      if (!latestByProduct.has(note.productId)) latestByProduct.set(note.productId, note);
+    });
     visibleExtensions.forEach((ext, index) => {
-      const card = createCard(ext);
+      const card = createCard(ext, latestByProduct.get(ext.id));
       card.style.animationDelay = `${index * 90}ms`;
       grid.appendChild(card);
     });
@@ -517,8 +523,15 @@
         throw new Error(`Failed to load extension data (${response.status})`);
       }
       const data = await response.json();
+      let notes = [];
+      try {
+        const notesResponse = await fetch(`notes.json?v=${Date.now()}`, { cache: 'no-store' });
+        if (notesResponse.ok) notes = (await notesResponse.json()).notes || [];
+      } catch (noteError) {
+        console.warn('Built by Kris: field-note links are unavailable.', noteError);
+      }
       renderProfile(data.profile);
-      renderExtensions(data.extensions);
+      renderExtensions(data.extensions, notes);
     } catch (error) {
       console.error('Built by Kris: could not load extensions.json.', error);
       const message = window.location.protocol === 'file:'
