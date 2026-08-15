@@ -8,6 +8,13 @@
   const bio = document.getElementById('hero-bio');
   const year = document.getElementById('year');
   const extensionCount = document.getElementById('extension-count');
+  const shippingPanel = document.getElementById('studio-shipping-panel');
+  const shippingTrack = document.getElementById('shipping-track');
+  const shippingName = document.getElementById('shipping-active-name');
+  const shippingDescription = document.getElementById('shipping-active-description');
+  const shippingMark = document.getElementById('shipping-active-mark');
+  const shippingHot = document.getElementById('shipping-hot');
+  const shippingPosition = document.getElementById('shipping-position');
 
   if (year) {
     year.textContent = new Date().getFullYear();
@@ -38,6 +45,96 @@
     if (!headline || !bio || !profile) return;
     headline.textContent = profile.headline || 'Chrome extensions by Kris';
     bio.textContent = profile.bio || '';
+  }
+
+  function productMark(name) {
+    const words = String(name || '').match(/[A-Z]+(?![a-z])|[A-Z]?[a-z]+|\d+/g) || [];
+    const initials = words.map((word) => word.charAt(0)).join('').slice(0, 2);
+    return (initials || String(name || 'BK').slice(0, 2)).toUpperCase();
+  }
+
+  function renderShippingQueue(extensions) {
+    if (!shippingPanel || !shippingTrack || !extensions.length) return;
+
+    const previous = document.getElementById('shipping-previous');
+    const next = document.getElementById('shipping-next');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let activeIndex = 0;
+    let timer = null;
+    let interactionPaused = false;
+
+    shippingTrack.innerHTML = '';
+    extensions.forEach((extension, index) => {
+      const color = /^#[0-9A-Fa-f]{6}$/.test(extension.accentColor || '') ? extension.accentColor : '#7054d1';
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'shipping-item';
+      button.textContent = productMark(extension.name);
+      button.title = extension.name;
+      button.setAttribute('aria-label', `Show ${extension.name}`);
+      button.style.setProperty('--shipping-color', color);
+      button.addEventListener('click', () => {
+        showProduct(index);
+        restart();
+      });
+      shippingTrack.appendChild(button);
+    });
+
+    const items = Array.from(shippingTrack.children);
+
+    function showProduct(index) {
+      activeIndex = (index + extensions.length) % extensions.length;
+      const extension = extensions[activeIndex];
+      const color = /^#[0-9A-Fa-f]{6}$/.test(extension.accentColor || '') ? extension.accentColor : '#7054d1';
+      items.forEach((item, itemIndex) => {
+        const active = itemIndex === activeIndex;
+        item.classList.toggle('is-active', active);
+        item.setAttribute('aria-pressed', String(active));
+      });
+      shippingPanel.style.setProperty('--shipping-active-color', color);
+      shippingMark.textContent = productMark(extension.name);
+      shippingName.textContent = extension.name;
+      shippingDescription.textContent = extension.tagline || extension.shortDescription || '';
+      shippingHot.hidden = !readFlag(extension.hot, false);
+      shippingPosition.textContent = `${String(activeIndex + 1).padStart(2, '0')} / ${String(extensions.length).padStart(2, '0')}`;
+
+      const activeItem = items[activeIndex];
+      const desiredLeft = activeItem.offsetLeft - (shippingTrack.clientWidth - activeItem.offsetWidth) / 2;
+      shippingTrack.scrollTo({ left: Math.max(0, desiredLeft), behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
+
+    function stop() {
+      window.clearInterval(timer);
+      timer = null;
+      shippingPanel.classList.add('is-paused');
+    }
+
+    function start() {
+      if (reduceMotion || interactionPaused || timer) return;
+      shippingPanel.classList.remove('is-paused');
+      timer = window.setInterval(() => showProduct(activeIndex + 1), 3200);
+    }
+
+    function restart() {
+      window.clearInterval(timer);
+      timer = null;
+      start();
+    }
+
+    previous?.addEventListener('click', () => { showProduct(activeIndex - 1); restart(); });
+    next?.addEventListener('click', () => { showProduct(activeIndex + 1); restart(); });
+    shippingPanel.addEventListener('mouseenter', () => { interactionPaused = true; stop(); });
+    shippingPanel.addEventListener('mouseleave', () => { interactionPaused = false; start(); });
+    shippingPanel.addEventListener('focusin', () => { interactionPaused = true; stop(); });
+    shippingPanel.addEventListener('focusout', (event) => {
+      if (!shippingPanel.contains(event.relatedTarget)) {
+        interactionPaused = false;
+        start();
+      }
+    });
+
+    showProduct(0);
+    if (reduceMotion) stop(); else start();
   }
 
   function createFeatureList(features) {
@@ -482,6 +579,7 @@
       : [];
 
     if (extensionCount) extensionCount.textContent = String(visibleExtensions.length).padStart(2, '0');
+    renderShippingQueue(visibleExtensions);
 
     if (visibleExtensions.length === 0) {
       grid.innerHTML = `
