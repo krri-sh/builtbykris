@@ -2088,3 +2088,167 @@ body::before {
   .capability-grid { grid-template-columns: 1fr; }
   .hot-release { left: .75rem; }
 }
+
+/* Homepage studio shipping queue */
+body { overflow-x: clip; }
+
+.studio-shipping-panel {
+  min-height: 31rem;
+  padding-bottom: 12rem;
+  --shipping-active-color: #7054d1;
+}
+
+.studio-summary { position: relative; z-index: 1; }
+.studio-summary > p {
+  max-width: 28ch;
+  margin-top: 1.25rem;
+  color: #504b69;
+  font-size: .78rem;
+  line-height: 1.6;
+}
+
+.shipping-queue {
+  position: absolute;
+  z-index: 3;
+  inset: auto 0 0;
+  min-height: 10.8rem;
+  padding: 1.1rem 1.45rem 1.25rem;
+  border-top: 1px solid rgba(80, 62, 140, .13);
+  background: rgba(255, 255, 255, .58);
+  backdrop-filter: blur(12px);
+}
+
+.shipping-queue-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .65rem;
+  color: #746d87;
+  font-size: .56rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.shipping-queue-heading b { color: #9a92ad; }
+
+.shipping-active {
+  display: grid;
+  grid-template-columns: 2.35rem minmax(0, 1fr) 3.65rem;
+  gap: .65rem;
+  align-items: center;
+  min-height: 3rem;
+}
+
+.shipping-active-mark {
+  width: 2.35rem;
+  height: 2.35rem;
+  display: grid;
+  place-items: center;
+  border-radius: .72rem;
+  background: var(--shipping-active-color);
+  color: #fff;
+  font-size: .58rem;
+  font-weight: 800;
+  transition: background .25s ease;
+}
+
+.shipping-active-copy { min-width: 0; }
+.shipping-active-copy strong,
+.shipping-active-copy span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.shipping-active-copy strong { font-size: .83rem; }
+.shipping-active-copy span { margin-top: .18rem; color: #665f78; font-size: .57rem; }
+
+.shipping-hot {
+  justify-self: end;
+  padding: .3rem .4rem;
+  border-radius: 999px;
+  background: #fde4dc;
+  color: #9d4a36;
+  font-size: .46rem;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.shipping-hot[hidden] { display: none; }
+
+.shipping-navigation {
+  display: grid;
+  grid-template-columns: 1.7rem minmax(0, 1fr) 1.7rem;
+  gap: .42rem;
+  align-items: center;
+  margin-top: .72rem;
+}
+
+.shipping-track {
+  display: flex;
+  gap: .42rem;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.shipping-track::-webkit-scrollbar { display: none; }
+
+.shipping-arrow,
+.shipping-item {
+  display: grid;
+  place-items: center;
+  border: 1px solid #d8d1e5;
+  color: var(--text);
+  background: rgba(255, 255, 255, .8);
+  cursor: pointer;
+}
+.shipping-arrow { width: 1.7rem; height: 1.7rem; border-radius: 50%; }
+.shipping-item {
+  flex: 0 0 2rem;
+  width: 2rem;
+  height: 2rem;
+  border-color: color-mix(in srgb, var(--shipping-color) 34%, white);
+  border-radius: .62rem;
+  background: color-mix(in srgb, var(--shipping-color) 10%, white);
+  font-size: .48rem;
+  font-weight: 800;
+  transition: transform .2s ease, background .2s ease, color .2s ease;
+}
+.shipping-arrow:hover,
+.shipping-arrow:focus-visible,
+.shipping-item:hover,
+.shipping-item:focus-visible { outline: none; border-color: var(--shipping-color, #8d7dbe); transform: translateY(-1px); }
+.shipping-item.is-active {
+  border-color: var(--shipping-color);
+  background: var(--shipping-color);
+  color: #fff;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .78);
+}
+
+.shipping-progress {
+  height: 2px;
+  margin-top: .72rem;
+  overflow: hidden;
+  border-radius: 99px;
+  background: rgba(89, 72, 145, .1);
+}
+.shipping-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--shipping-active-color);
+  transform-origin: left;
+  animation: shipping-progress 3.2s linear infinite;
+}
+.studio-shipping-panel.is-paused .shipping-progress span { animation-play-state: paused; }
+
+@keyframes shipping-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@media (max-width: 640px) {
+  .studio-shipping-panel { min-height: 30rem; padding-bottom: 11.6rem; }
+  .shipping-queue { padding-inline: 1rem; }
+}
