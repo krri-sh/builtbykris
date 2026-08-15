@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore practical use cases for every Built by Kris browser extension." />
+  <title>Extension Use Cases — Built by Kris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=20260815-1" />
+  <link rel="stylesheet" href="css/use-cases.css?v=20260815-1" />
+  <script src="js/use-cases.js?v=20260815-1" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="Built by Kris home">
+        <span class="logo-mark" aria-hidden="true">BK</span>
+        <span class="logo-script">Built by Kris</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html#extensions">Extensions</a>
+        <a href="use-cases.html" aria-current="page">Use cases</a>
+        <a href="about-me.html">About me</a>
+        <a href="privacy-policy.html">Privacy</a>
+        <a class="nav-cta" href="mailto:support@builtbykris.com">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="usecase-page">
+    <section class="usecase-hero">
+      <div class="container usecase-hero-grid">
+        <div>
+          <p class="eyebrow">Practical browser software</p>
+          <h1>Find the tool for the work in front of you.</h1>
+        </div>
+        <div>
+          <p>Explore real situations where each extension removes friction, protects information, or returns time to the people doing the work.</p>
+          <div class="usecase-summary"><strong id="usecase-product-count">—</strong><span>products</span><strong id="usecase-scenario-count">—</strong><span>detailed scenarios</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="usecase-directory" aria-labelledby="directory-heading">
+      <div class="container">
+        <div class="usecase-section-heading">
+          <div><p class="section-kicker">Use-case library</p><h2 id="directory-heading">Choose an extension.</h2></div>
+          <p>Select a product to see who it helps, where it fits, how it works, and the practical outcome it creates.</p>
+        </div>
+        <div class="usecase-browser">
+          <aside class="usecase-selector" aria-label="Extension list">
+            <div class="usecase-selector-label"><span>Extensions</span><small id="selector-count"></small></div>
+            <div id="usecase-tabs" role="tablist" aria-orientation="vertical"></div>
+          </aside>
+          <section class="usecase-panel" id="usecase-panel" aria-live="polite">
+            <div class="usecase-loading">Loading use cases…</div>
+          </section>
+        </div>
+        <div class="usecase-error" id="usecase-error" role="alert" hidden></div>
+      </div>
+    </section>
+
+    <section class="usecase-cta">
+      <div class="container usecase-cta-inner">
+        <div><p class="section-kicker">Still deciding?</p><h2>Describe the repetitive part.</h2></div>
+        <div><p>Tell me where work slows down. I’ll point you to the closest tool—or it may become the starting point for the next one.</p><a class="btn btn-primary" href="mailto:support@builtbykris.com?subject=Help%20me%20choose%20an%20extension">Ask Kris</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-tagline">Built with care by Kris.</p>
+      <div class="footer-links"><a href="use-cases.html">Use cases</a><a href="about-me.html">About me</a><a href="mailto:support@builtbykris.com">support@builtbykris.com</a><a href="privacy-policy.html">Privacy Policy</a></div>
+      <p class="copyright">© 2026 Built by Kris. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
