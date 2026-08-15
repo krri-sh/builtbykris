@@ -9,7 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css?v=20260810-2" />
-  <script src="js/app.js?v=20260810-3" defer></script>
+  <link rel="stylesheet" href="css/notes.css?v=20260815-1" />
+  <script src="js/app.js?v=20260815-1" defer></script>
+  <script src="js/notes-home.js?v=20260815-1" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -21,6 +23,7 @@
       <nav class="nav">
         <a href="#extensions">Extensions</a>
         <a href="use-cases.html">Use cases</a>
+        <a href="notes.html">Notes</a>
         <a href="about-me.html">About me</a>
         <a href="privacy-policy.html">Privacy</a>
         <a class="nav-cta" href="mailto:support@builtbykris.com">Contact</a>
@@ -61,6 +64,22 @@
       </div>
     </section>
 
+    <section class="field-notes-home" aria-labelledby="field-notes-heading">
+      <div class="container">
+        <div class="notes-section-heading">
+          <div><p class="section-kicker">From the build log</p><h2 id="field-notes-heading">Useful ideas, honestly observed.</h2></div>
+          <div><p>Notes about browser work, automation, AI, privacy, and the small frustrations behind each tool.</p><a href="notes.html">Explore all field notes <span aria-hidden="true">↗</span></a></div>
+        </div>
+        <div class="notes-home-grid" id="notes-home-grid" aria-live="polite"><p class="notes-loading">Loading field notes…</p></div>
+        <div class="notes-rotation-controls" id="notes-rotation-controls" hidden>
+          <button type="button" id="notes-prev" aria-label="Show previous field notes">←</button>
+          <span id="notes-position" aria-live="polite"></span>
+          <button type="button" id="notes-next" aria-label="Show next field notes">→</button>
+          <button type="button" class="notes-pause" id="notes-pause" aria-pressed="false">Pause rotation</button>
+        </div>
+      </div>
+    </section>
+
     <section class="about" id="about" aria-labelledby="about-heading">
       <div class="container about-inner">
         <p class="section-kicker">Behind the work</p>
@@ -76,6 +95,7 @@
       <p class="footer-tagline">Built with care by Kris.</p>
       <div class="footer-links">
         <a href="use-cases.html">Use cases</a>
+        <a href="notes.html">Notes</a>
         <a href="about-me.html">About me</a>
         <a href="mailto:support@builtbykris.com">support@builtbykris.com</a>
         <a href="privacy-policy.html">Privacy Policy</a>
