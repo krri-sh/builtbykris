@@ -8,9 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=20260810-2" />
+  <link rel="stylesheet" href="css/styles.css?v=20260815-3" />
   <link rel="stylesheet" href="css/notes.css?v=20260815-1" />
-  <script src="js/app.js?v=20260815-1" defer></script>
+  <script src="js/app.js?v=20260815-2" defer></script>
   <script src="js/notes-home.js?v=20260815-1" defer></script>
 </head>
 <body>
@@ -43,11 +43,27 @@
             <a class="btn btn-ghost" href="mailto:support@builtbykris.com">Start a conversation</a>
           </div>
         </div>
-        <aside class="studio-panel" aria-label="Studio overview">
-          <div class="studio-panel-top"><span class="status-dot"></span><span>Actively shipping</span><b>2026</b></div>
-          <div class="studio-count"><strong id="extension-count">—</strong><span>focused browser products</span></div>
-          <div class="studio-principles"><span>Local-first</span><span>Purpose-built</span><span>Human support</span></div>
-          <p>Small, opinionated tools for real work—not another sprawling software suite.</p>
+        <aside class="studio-panel studio-shipping-panel" id="studio-shipping-panel" aria-label="Studio overview and product queue">
+          <div class="studio-summary">
+            <div class="studio-panel-top"><span class="status-dot"></span><span>Actively shipping</span><b>2026</b></div>
+            <div class="studio-count"><strong id="extension-count">—</strong><span>focused browser products</span></div>
+            <div class="studio-principles"><span>Local-first</span><span>Purpose-built</span><span>Human support</span></div>
+            <p>Small, opinionated tools for real work—not another sprawling software suite.</p>
+          </div>
+          <div class="shipping-queue" id="shipping-queue" aria-label="Browse products">
+            <div class="shipping-queue-heading"><span>Now shipping</span><b id="shipping-position">— / —</b></div>
+            <div class="shipping-active">
+              <div class="shipping-active-mark" id="shipping-active-mark" aria-hidden="true">BK</div>
+              <div class="shipping-active-copy"><strong id="shipping-active-name">Built by Kris</strong><span id="shipping-active-description">Purpose-built browser tools.</span></div>
+              <span class="shipping-hot" id="shipping-hot" hidden>Trending</span>
+            </div>
+            <div class="shipping-navigation">
+              <button class="shipping-arrow" id="shipping-previous" type="button" aria-label="Previous product">←</button>
+              <div class="shipping-track" id="shipping-track"></div>
+              <button class="shipping-arrow" id="shipping-next" type="button" aria-label="Next product">→</button>
+            </div>
+            <div class="shipping-progress" aria-hidden="true"><span></span></div>
+          </div>
         </aside>
       </div>
     </section>
