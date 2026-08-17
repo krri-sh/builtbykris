@@ -211,7 +211,8 @@
         "The final edit should still be yours. AI can remove the blank page. It should not remove the person.",
         "What usually slows you down more: finding the idea, writing the hook, or pressing publish?"
       ]
-    },{
+    },
+    {
       "id": "socialpostforge-content-delay-cost",
       "visible": true,
       "featured": true,
@@ -418,5 +419,6 @@
         "Search engines are excellent. They simply have no objection to billing you for the same thought forever.",
         "What recurring search deserves to become part of your personal technical memory?"
       ]
+    }
   ]
 }
