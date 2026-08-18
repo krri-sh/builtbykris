@@ -346,6 +346,13 @@
         button: 'Recall syntax',
         type: 'default'
       },
+      morphogrid: {
+        label: 'FILE READY',
+        input: 'monthly_sales.xlsx · 1,248 rows',
+        resultLabel: 'Clean preview',
+        button: 'Apply recipe',
+        type: 'default'
+      },
       ritual: {
         label: 'BROWSER SOP',
         input: '',
