@@ -72,6 +72,14 @@
       'The selector matches twelve elements. Eleven of them are apparently decorative surprises.',
       'If you search it for the fourth time, congratulations: it is now a curriculum.',
       'Team knowledge, now available somewhere other than one person’s browser bookmarks.'
+    ],
+    morphogrid: [
+      'The workbook begins on row eight because apparently rows one through seven needed a dramatic opening sequence.',
+      'One CRM export, six spellings of the same territory, and a phone column exploring abstract expressionism.',
+      'The vendor called it a standard format. They did not specify whose standard, or from which century.',
+      'The meeting starts in ten minutes. The survey currently says “Great”, “ great ”, and “GREAT!!!” are different insights.',
+      'Audit evidence should contain a trail. “I dragged the formula down and hoped” is not the preferred trail.',
+      'JSON became a table, received some manners, and returned to the API pretending nothing happened.'
     ]
   };
 
