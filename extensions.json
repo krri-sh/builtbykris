@@ -226,6 +226,32 @@
   ],
   "accentColor": "#006080",
   "icon": "DR"
-}
+},
+{
+      "id": "morphogrid",
+      "visible": true,
+      "hot": true,
+      "name": "MorphoGrid",
+      "url": "https://morphogrid.builtbykris.com",
+      "videoUrl": "",
+      "tagline": "Messy data in. Useful data out.",
+      "shortDescription": "Clean spreadsheets, reshape exports, validate records, build quick insights, and save repeatable visual transformation recipes.",
+      "fullDescription": "MorphoGrid is a local-first visual transformation studio for XLSX, CSV, TSV, custom-delimited text, JSON, and XML. Business users can build inspectable cleanup pipelines, preview every step, reuse recipes, and export useful data without formula archaeology or a database.",
+      "painpoint": "The export was supposed to be quick, but it arrived with the wrong headers, strange dates, duplicate rows, and another afternoon attached.",
+      "useCases": [
+        "Finance teams standardizing recurring packs before reconciliation, pivots, and reporting",
+        "Revenue operations teams cleaning CRM exports, contacts, stages, and territory fields",
+        "Operations teams translating irregular supplier, inventory, and procurement files",
+        "Analysts turning survey, campaign, and support exports into reusable insights"
+      ],
+      "keyFeatures": [
+        "Visual filter, sort, calculate, join, rename, regex, date, rank, and aggregate steps",
+        "Reusable, searchable, versioned recipes with schema-drift mapping",
+        "Local previews, validation diagnostics, pivots, charts, and Audit ZIP exports",
+        "Free local Ollama AI with explicitly approved optional cloud providers"
+      ],
+      "accentColor": "#6656D9",
+      "icon": "MG"
+    }
   ]
 }
