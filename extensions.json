@@ -233,7 +233,7 @@
       "hot": true,
       "name": "MorphoGrid",
       "url": "https://morphogrid.builtbykris.com",
-      "videoUrl": "",
+      "videoUrl": "https://drive.google.com/file/d/1QB_ekX9yAnN9Fow8acEJrW5xI1Oxz1Pt/view?usp=sharing",
       "tagline": "Messy data in. Useful data out.",
       "shortDescription": "Clean spreadsheets, reshape exports, validate records, build quick insights, and save repeatable visual transformation recipes.",
       "fullDescription": "MorphoGrid is a local-first visual transformation studio for XLSX, CSV, TSV, custom-delimited text, JSON, and XML. Business users can build inspectable cleanup pipelines, preview every step, reuse recipes, and export useful data without formula archaeology or a database.",
